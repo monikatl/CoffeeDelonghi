@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    card_view:cardBackgroundColor="@color/colorPrimary"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:fontFamily="@font/cinzel_decorative"
+            android:text=""
+            android:textColor="@color/colorSecondary"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/order"
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:text=""
+            android:textColor="@color/colorSecondary"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/double_info"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@color/colorSecondary"
+            android:textSize="10sp" />
+
+
+        <ImageButton
+            android:id="@+id/ok_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8sp"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ok"
+            android:tint="#BD9460" />
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/bin"
+            android:tint="#BD9460" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

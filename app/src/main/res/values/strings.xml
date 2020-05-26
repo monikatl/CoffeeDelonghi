@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Coffee Delonghi</string>
+    <string name="choice">WYBIERZ</string>
+    <string name="done">go</string>
+    <string name="instructions_title">
+   <b>Jak grac:</b>
+   </string>
+
+    <string name="instructions">
+       \t \u2022 Znajdz filizanke kawy ukryta pod brazowym tłem. \n
+       \t \u2022 Dotknij ekranu i podazaj za kolem. \n
+       \t \u2022 Jezeli odnajdziesz kawe zdjmij palec z ekranu. \n \n
+       \t \u2022 Aby zagrac ponownie dotknij ekranu.
+    </string>
+
+    <string name="put_name">Dla kogo przygotowac?</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="options" >
+        <item>WYBIERZ NAPÓJ</item>
+        <item>LISTA ZAMÓWIEŃ</item>
+        <item>ZAGRAJ SE</item>
+    </string-array>
+
+    <string-array name="coffee">
+        <item>ESPRESSO</item>
+        <item>CAPPUCINO</item>
+        <item>CAFFEE LATTE</item>
+        <item>LATTE MACCHIATO</item>
+        <item>FLAT WHITE</item>
+        <item>MLEKO</item>
+    </string-array>
+</resources>
