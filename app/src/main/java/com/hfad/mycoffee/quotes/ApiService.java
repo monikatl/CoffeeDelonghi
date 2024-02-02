@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
-    @GET("quotes/5")
+    @GET("quotes")
     Observable<List<Quote>> getQuotes();
 
     static ApiService getClient() {

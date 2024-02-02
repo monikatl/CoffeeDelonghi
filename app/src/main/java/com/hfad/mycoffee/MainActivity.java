@@ -5,6 +5,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     private Disposable disposable = null;
 
     private List<Quote> quotes = new ArrayList<>();
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private static final int POLLING_INTERVAL = 7000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +79,17 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list_options);
         listView.setOnItemClickListener(itemClickListener);
 
-        getQuotes();
+        startChangingQuotes();
+    }
+
+    private void startChangingQuotes() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getQuotes();
+                handler.postDelayed(this, POLLING_INTERVAL);
+            }
+        }, 0);
     }
 
     private void getQuotes() {
@@ -84,11 +99,14 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(quotes -> {
                             this.quotes.clear();
                             this.quotes.addAll(quotes);
-                            TextView textView = (TextView)findViewById(R.id.quote);
-                            textView.setText(this.quotes.get(0).getQuote() + "\n" + this.quotes.get(0).getAuthor());
+                            for(int i = 0; i<quotes.size(); i++){
+                                TextView textView = (TextView)findViewById(R.id.quote);
+                                textView.setText(this.quotes.get(0).getQuote() + "\n" + this.quotes.get(0).getAuthor());
+                            }
                         },
                         throwable -> {
-
+                            TextView textView = (TextView)findViewById(R.id.quote);
+                            textView.setText("Nie można pobrać cytatu...");
                         });
     }
 
@@ -96,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         disposable.dispose();
+        handler.removeCallbacksAndMessages(null);
     }
 
     @Override
