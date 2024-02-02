@@ -45,8 +45,6 @@ public class CoffeeActivity extends AppCompatActivity {
         showCoffeeInfo();
     }
 
-
-
     public void showCoffeeInfo(){
         TextView nameOfCoffee = findViewById(R.id.nameCoffee);
         nameOfCoffee.setText(coffee.getName());
@@ -59,9 +57,6 @@ public class CoffeeActivity extends AppCompatActivity {
         image.setContentDescription(coffee.getName());
     }
 
-
-
-
     public void onCheckBoxClickedSugar(View view){
         boolean checked = ((CheckBox) view).isChecked();
         if(checked){
@@ -70,7 +65,6 @@ public class CoffeeActivity extends AppCompatActivity {
             coffee.setSugar(false);
         }
     }
-
 
     public void onCheckBoxClickedDouble(View view) {
         boolean checked = ((CheckBox) view).isChecked();

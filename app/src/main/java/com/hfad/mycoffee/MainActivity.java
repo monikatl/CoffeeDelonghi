@@ -12,18 +12,34 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import com.hfad.mycoffee.orders.OrdersActivity;
 import com.hfad.mycoffee.play.PlayActivity;
+import com.hfad.mycoffee.quotes.ApiService;
+import com.hfad.mycoffee.quotes.Quote;
 
 import static com.hfad.mycoffee.R.layout.activity_main;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Retrofit;
 
 /* This app is created for us and our family. Its goul is make easier our meetings when lot of people wont order a coffee and we
     don't have to remember all orders and we don't have to describe every time each coffee before some one will decide to choice it.
  */
 
 public class MainActivity extends AppCompatActivity {
+
+    private final ApiService service = ApiService.getClient();
+    private Disposable disposable = null;
+
+    private List<Quote> quotes = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +74,28 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list_options);
         listView.setOnItemClickListener(itemClickListener);
 
+        getQuotes();
+    }
+
+    private void getQuotes() {
+        disposable = service.getQuotes()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(quotes -> {
+                            this.quotes.clear();
+                            this.quotes.addAll(quotes);
+                            TextView textView = (TextView)findViewById(R.id.quote);
+                            textView.setText(this.quotes.get(0).getQuote() + "\n" + this.quotes.get(0).getAuthor());
+                        },
+                        throwable -> {
+
+                        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disposable.dispose();
     }
 
     @Override
