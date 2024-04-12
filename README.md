@@ -7,3 +7,6 @@ Coffee Delonghi
    - Android
    - JavaRx
    - Retrofit2
+  
+https://www.figma.com/file/6w8CDXiB2uPV7PoSKlR4mZ/Untitled?type=design&node-id=0-1&mode=design&t=2CMwEQ2uaViLYEte-0
+
